@@ -1,0 +1,32 @@
+terminals command
+
+adhoc orchestration, forks & paralization
+1. ansible -i inventory multi -a .....
+   ex: ansible -i inventory multi -a "hostname"
+   ex: ansible -i inventory multi -a "date"
+   ex: ansible -i inventory multi -a "df -h"
+
+setup module
+1. ansible -i inventory db -m setup
+2. ansible -i inventory multi -b -m yum -a "name=ntp state=present"
+
+becoming root with sudo
+1. ansible -i inventory multi -K -m service -a "name=ntpd state=started enabled=yes"
+2. ansible -i inventory multi -b -m service -a "name=ntpd state=started enabled=yes"
+
+ansible CLI docs
+   view server offset
+      1. ansible -i inventory multi -b -a "ntpdate -q 0.rhel.pool.ntp.org"
+   start ntpd
+      1. ansible -i inventory multi -b -a "service ntpd start"
+   stop ntpd
+      1. ansible -i inventory multi -b -a "service ntpd stop"
+
+   https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html
+
+targeting inventory groups
+   mysql_user (failed because module is required)
+      1. ansible -i inventory db -b -m mysql_user -a "name=django host=% password=12345 priv=*.*:ALL state=present"
+   view application server status using ad-hoc commands
+      1. ansible -i inventory app -a "free -m" --limit "192.168.60.4"
+      2. ansible -i inventory app -a "free -m" --limit "*.4"

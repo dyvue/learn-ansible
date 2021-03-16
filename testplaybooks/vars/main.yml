@@ -1,0 +1,2 @@
+ansible_net_hostname: 192.168.0.105
+ansible_net_version: 1.0

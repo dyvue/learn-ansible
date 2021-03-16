@@ -1,0 +1,16 @@
+terminals command
+
+vagrant setup
+   1. vagrant init geerlingguy/centos7
+   bring the machine / downloads
+      1. vagrant up
+      view ssh
+         1. vagrant ssh
+      view ssh cfg
+         2. vagrant ssh-config
+
+first ansible playbook test
+   1. vagrant provision
+
+destroy the vagrant
+   1. vagrant destroy

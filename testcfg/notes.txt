@@ -1,0 +1,9 @@
+terminals command
+
+using an ansible cfg file
+   ping
+      1. ansible example -m ping -u dyvue
+
+running adhoc commands
+   1. ansible example -a "free -h" -u dyvue
+   2. ansible example -a "date" -u dyvue
